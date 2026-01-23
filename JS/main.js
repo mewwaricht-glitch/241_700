@@ -286,7 +286,7 @@ score_1 = score_1.map ((s) => {
     return s * 2
 })
 
-//arrofunction
+//arrowfunction
 score_1.forEach((s) => { /*s คือตัวแปรเก็บค่า */
     console.log('forEach Score',s)
 })
@@ -305,18 +305,18 @@ let studentt = [
 ]
 
 let studenttt = studentt.find((s) => {
-    if (s.name == 'aa') {
+    if (s.namee == 'aa') {
         return true
     }
 })
 
 let double_score = studentt.map((s) => {
-    s.score = s.score * 2
+    s.scoree = s.score * 2
     return s
 })
 
 let highScore = studentt.filter((s) => {
-    if(s.score >= 120) {
+    if(s.scoree >= 120) {
         return true
     }
 })
