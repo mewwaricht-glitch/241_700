@@ -21,6 +21,9 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mysql = require('mysql2/promise')
 const app = express();
+const cors = require('cors');
+
+app.use(cors());
 
 app.use(bodyParser.json());
 const port = 8000;
@@ -39,8 +42,8 @@ const initMySQL = async () => {
 
 // path: = GET /users สำหรับดึงข้อมูล users ทั้งหมด
 app.get('/users', async (req,res) => {
-    const results = await conn.query('SELECT * FROM users');
-    res.json(result[0]);
+    const [results] = await conn.query('SELECT * FROM users');
+    res.json(results);
 })
 
 // path: = POST /users สำหรับเพิ่ม user ใหม่ 
@@ -56,7 +59,7 @@ app.post('/users', async (req, res) => {
         console.error('Error inserting user:',error);
         res.status(500).json({ message: 'Error adding user' });
     }
-})
+});
 // path: = GET /users/:id สำหรับดึงข้อมูล users ตาม id
 app.get('/users/:id', async (req, res) => {
     try {
