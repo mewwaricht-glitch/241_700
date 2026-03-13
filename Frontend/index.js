@@ -1,3 +1,5 @@
+//const express = require("express");
+
 const validdateData = (userData) => {
     let errors = [];
 
@@ -65,6 +67,7 @@ const submitData = async () => {
             }
         }
 
+
         const response = await axios.post('http://localhost:8000/users', userData);
 
         console.log('response', response);
@@ -76,6 +79,12 @@ const submitData = async () => {
 
         console.log('error message', error.message);
         console.log('error details', error.errors);
+
+        if (error.response) {
+            console.log('Error response:',error.response);
+            error.message = error.response.data.message
+            error.errors = error.response.data.errors
+        }
 
         let htmlData = '<div>';
         htmlData += '<div>' + (error.message || 'เกิดข้อผิดพลาด') + '</div>';
