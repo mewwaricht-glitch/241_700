@@ -46,7 +46,7 @@ app.get('/users', async (req,res) => {
     res.json(results);
 })
 
-const validdateData = (userData) => {
+const validateData = (userData) => {
     let errors = [];
 
     if (!userData.firstName) {
@@ -132,7 +132,7 @@ app.put('/users/:id', async (req, res) => {
 })
 
 //path: = DELETE /users/:id สำหรับลบ user ตาม id
-app.delete('/users/:d', async (req, res) => {
+app.delete('/users/:id', async (req, res) => {
     try {
         let id = req.params.id;
         const results = await conn.query('DELETE FROM users WHERE id = ?', id);
